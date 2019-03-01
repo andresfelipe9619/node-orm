@@ -9,6 +9,8 @@ var usersRouter = require("./routes/users");
 var contacts = require("./routes/contact");
 var app = express();
 
+process.env.DATABASE_URL =
+  "postgres://qiqtfyygcanagi:0a3ae7218dee58422b16c2da4a448972f6561e8f7384046ef2b8928ef7db978c@ec2-107-20-167-11.compute-1.amazonaws.com:5432/d5fvcomjbe9ogl";
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
