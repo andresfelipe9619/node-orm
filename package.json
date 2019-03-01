@@ -3,18 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon app.js",
+    "test": "mocha"
   },
   "dependencies": {
     "bookshelf": "^0.14.2",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
     "knex": "^0.16.3",
+    "mocha": "^6.0.2",
     "morgan": "~1.9.0",
     "nodemon": "^1.18.10",
     "pg": "^7.8.1"
+  },
+  "devDependencies": {
+    "nyc": "^13.3.0"
   }
 }
