@@ -1,18 +1,12 @@
-//During the test the env variable is set to test
 process.env.NODE_ENV = "test";
-
-//Require the dev-dependencies
 let chai = require("chai");
 let chaiHttp = require("chai-http");
 let server = require("../app");
 let should = chai.should();
 
 chai.use(chaiHttp);
-//Our parent block
+
 describe("Contacts", () => {
-  /*
-   * Test the /GET route
-   */
   describe("/GET contacts", () => {
     it("it should GET all the contacts", done => {
       chai
@@ -30,7 +24,7 @@ describe("Contacts", () => {
     it("it should GET a single contact", done => {
       chai
         .request(server)
-        .get("/contacts/1")
+        .get("/contacts/2")
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a("object");
@@ -40,24 +34,6 @@ describe("Contacts", () => {
   });
 
   describe("/POST contact", () => {
-    // it('it should not POST a contact without pages field', (done) => {
-    //   let contact = {
-    //     title: "The Lord of the Rings",
-    //     author: "J.R.R. Tolkien",
-    //     year: 1954
-    //   }
-    //   chai.request(server)
-    //     .post('/contact')
-    //     .send(contact)
-    //     .end((err, res) => {
-    //       res.should.have.status(200);
-    //       res.body.should.be.a('object');
-    //       res.body.should.have.property('errors');
-    //       res.body.errors.should.have.property('pages');
-    //       res.body.errors.pages.should.have.property('kind').eql('required');
-    //       done();
-    //     });
-    // });
     it("it should POST a contact ", done => {
       let contact = {
         firstName: "Andres ffd",
@@ -77,16 +53,17 @@ describe("Contacts", () => {
           done();
         });
     });
+  });
+  describe("/PUT contacts", () => {
     it("it should PUT a contact ", done => {
       let contact = {
-        id: 1,
         firstName: "Andres ffd",
         lastName: "Suarez ss",
         emailAddress: "andress@gmail.com"
       };
       chai
         .request(server)
-        .put("/contacts")
+        .put("/contacts/2")
         .send(contact)
         .end((err, res) => {
           res.should.have.status(200);
@@ -94,6 +71,18 @@ describe("Contacts", () => {
           res.body.should.have.property("firstName");
           res.body.should.have.property("lastName");
           res.body.should.have.property("emailAddress");
+          done();
+        });
+    });
+  });
+  describe("/DELETE contacts", () => {
+    it("it should DELETE a contact ", done => {
+      chai
+        .request(server)
+        .del("/contacts/2")
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
           done();
         });
     });
