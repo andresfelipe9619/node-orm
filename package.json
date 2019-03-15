@@ -22,6 +22,9 @@
     "pg": "^7.8.1"
   },
   "devDependencies": {
-    "nyc": "^13.3.0"
+    "assert": "^1.4.1",
+    "cucumber": "^5.1.0",
+    "nyc": "^13.3.0",
+    "request": "^2.88.0"
   }
 }
