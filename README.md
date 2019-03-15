@@ -6,6 +6,11 @@ This is a simple CRUD for an ORM workshop
 
 - `npm install`
 - `npm start`
+## Do you even test?
+### Unit tests
+- `npm test`
+### Functional tests
+- `npm test`
 
 # What stack does this use
 

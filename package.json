@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js",
-    "test": "mocha"
+    "test": "mocha",
+    "cucumber": "cucumber-js features/ -r features/steps/"
   },
   "dependencies": {
     "bookshelf": "^0.14.2",
